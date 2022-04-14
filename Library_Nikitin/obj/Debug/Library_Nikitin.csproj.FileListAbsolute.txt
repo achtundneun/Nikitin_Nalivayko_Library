@@ -1,0 +1,68 @@
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\bin\Debug\Library_Nikitin.exe.config
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\bin\Debug\Library_Nikitin.exe
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\bin\Debug\Library_Nikitin.pdb
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\MainWindow.g.cs
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\App.g.cs
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin_MarkupCompile.cache
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin_MarkupCompile.lref
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\MainWindow.baml
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.g.resources
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.Properties.Resources.resources
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.csproj.GenerateResource.cache
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.csproj.CoreCompileInputs.cache
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.exe
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.pdb
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\AddReaderWindow.g.cs
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\AuthWindow.g.cs
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookAddWindow.g.cs
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookLendingWindow.g.cs
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookListWindow.g.cs
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\UserListWindow.g.cs
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\AddReaderWindow.baml
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\AuthWindow.baml
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookAddWindow.baml
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookLendingWindow.baml
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookListWindow.baml
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\UserListWindow.baml
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin_Content.g.cs
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\bin\Debug\EntityFramework.dll
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\bin\Debug\EntityFramework.SqlServer.dll
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\bin\Debug\EntityFramework.xml
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\bin\Debug\EntityFramework.SqlServer.xml
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\bin\Debug\ru\EntityFramework.resources.dll
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.csproj.CopyComplete
+D:\проекты Visual Studio\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.csproj.AssemblyReference.cache
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\bin\Debug\Library_Nikitin.exe.config
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\bin\Debug\Library_Nikitin.exe
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\bin\Debug\Library_Nikitin.pdb
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\bin\Debug\EntityFramework.dll
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\bin\Debug\EntityFramework.xml
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.csproj.AssemblyReference.cache
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\AddReaderWindow.g.cs
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\AuthWindow.g.cs
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookAddWindow.g.cs
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookLendingWindow.g.cs
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookListWindow.g.cs
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\MainWindow.g.cs
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\UserListWindow.g.cs
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\App.g.cs
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin_Content.g.cs
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin_MarkupCompile.cache
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin_MarkupCompile.lref
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\AddReaderWindow.baml
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\AuthWindow.baml
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookAddWindow.baml
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookLendingWindow.baml
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\BookListWindow.baml
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\MainWindow.baml
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Windows\UserListWindow.baml
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.g.resources
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.Properties.Resources.resources
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.csproj.GenerateResource.cache
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.csproj.CoreCompileInputs.cache
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.csproj.CopyComplete
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.exe
+C:\Users\kekob\Desktop\Library_Nikitin\Library_Nikitin\obj\Debug\Library_Nikitin.pdb

@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Book" Relationship="Self.AuthorBook" FromRole="Author" ToRole="Book" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="NumBookshelf" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Bookshelf" Relationship="Self.FK_Book_Bookshelf" FromRole="Book" ToRole="Bookshelf" />
+    <NavigationProperty Name="ClientBooks" Relationship="Self.FK_ClientBooks_Book" FromRole="Book" ToRole="ClientBooks" />
+    <NavigationProperty Name="Author" Relationship="Self.AuthorBook" FromRole="Book" ToRole="Author" />
+    <NavigationProperty Name="Genre" Relationship="Self.BookGenre" FromRole="Book" ToRole="Genre" />
+  </EntityType>
+  <EntityType Name="Bookcase">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Bookshelf" Relationship="Self.CaseShelf" FromRole="Bookcase" ToRole="Bookshelf" />
+    <NavigationProperty Name="Hall" Relationship="Self.HallBookcase" FromRole="Bookcase" ToRole="Hall" />
+  </EntityType>
+  <EntityType Name="Bookshelf">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Book" Relationship="Self.FK_Book_Bookshelf" FromRole="Bookshelf" ToRole="Book" />
+    <NavigationProperty Name="Bookcase" Relationship="Self.CaseShelf" FromRole="Bookshelf" ToRole="Bookcase" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ClientBooks" Relationship="Self.FK_ClientBooks_Client" FromRole="Client" ToRole="ClientBooks" />
+  </EntityType>
+  <EntityType Name="ClientBooks">
+    <Key>
+      <PropertyRef Name="IDClient" />
+      <PropertyRef Name="IDBook" />
+    </Key>
+    <Property Name="IDClient" Type="Int32" Nullable="false" />
+    <Property Name="IDBook" Type="Int32" Nullable="false" />
+    <Property Name="From" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="To" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Book" Relationship="Self.FK_ClientBooks_Book" FromRole="ClientBooks" ToRole="Book" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_ClientBooks_Client" FromRole="ClientBooks" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="Floor">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Hall" Relationship="Self.FK_Hall_Floor" FromRole="Floor" ToRole="Hall" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Book" Relationship="Self.BookGenre" FromRole="Genre" ToRole="Book" />
+  </EntityType>
+  <EntityType Name="Hall">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="Byte" Nullable="false" />
+    <Property Name="NumFloor" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Floor" Relationship="Self.FK_Hall_Floor" FromRole="Hall" ToRole="Floor" />
+    <NavigationProperty Name="Bookcase" Relationship="Self.HallBookcase" FromRole="Hall" ToRole="Bookcase" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Book_Bookshelf">
+    <End Role="Bookshelf" Type="Self.Bookshelf" Multiplicity="1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookshelf">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="NumBookshelf" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientBooks_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="ClientBooks" Type="Self.ClientBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientBooks">
+        <PropertyRef Name="IDBook" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientBooks_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ClientBooks" Type="Self.ClientBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientBooks">
+        <PropertyRef Name="IDClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hall_Floor">
+    <End Role="Floor" Type="Self.Floor" Multiplicity="1" />
+    <End Role="Hall" Type="Self.Hall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Floor">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="Hall">
+        <PropertyRef Name="NumFloor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AuthorBook">
+    <End Role="Author" Type="Self.Author" Multiplicity="*" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+  </Association>
+  <Association Name="BookGenre">
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <End Role="Genre" Type="Self.Genre" Multiplicity="*" />
+  </Association>
+  <Association Name="CaseShelf">
+    <End Role="Bookcase" Type="Self.Bookcase" Multiplicity="*" />
+    <End Role="Bookshelf" Type="Self.Bookshelf" Multiplicity="*" />
+  </Association>
+  <Association Name="HallBookcase">
+    <End Role="Bookcase" Type="Self.Bookcase" Multiplicity="*" />
+    <End Role="Hall" Type="Self.Hall" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="LibraryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Author" EntityType="Self.Author" />
+    <EntitySet Name="Book" EntityType="Self.Book" />
+    <EntitySet Name="Bookcase" EntityType="Self.Bookcase" />
+    <EntitySet Name="Bookshelf" EntityType="Self.Bookshelf" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="ClientBooks" EntityType="Self.ClientBooks" />
+    <EntitySet Name="Floor" EntityType="Self.Floor" />
+    <EntitySet Name="Genre" EntityType="Self.Genre" />
+    <EntitySet Name="Hall" EntityType="Self.Hall" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Book_Bookshelf" Association="Self.FK_Book_Bookshelf">
+      <End Role="Bookshelf" EntitySet="Bookshelf" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientBooks_Book" Association="Self.FK_ClientBooks_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="ClientBooks" EntitySet="ClientBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientBooks_Client" Association="Self.FK_ClientBooks_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="ClientBooks" EntitySet="ClientBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hall_Floor" Association="Self.FK_Hall_Floor">
+      <End Role="Floor" EntitySet="Floor" />
+      <End Role="Hall" EntitySet="Hall" />
+    </AssociationSet>
+    <AssociationSet Name="AuthorBook" Association="Self.AuthorBook">
+      <End Role="Author" EntitySet="Author" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="BookGenre" Association="Self.BookGenre">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Genre" EntitySet="Genre" />
+    </AssociationSet>
+    <AssociationSet Name="CaseShelf" Association="Self.CaseShelf">
+      <End Role="Bookcase" EntitySet="Bookcase" />
+      <End Role="Bookshelf" EntitySet="Bookshelf" />
+    </AssociationSet>
+    <AssociationSet Name="HallBookcase" Association="Self.HallBookcase">
+      <End Role="Bookcase" EntitySet="Bookcase" />
+      <End Role="Hall" EntitySet="Hall" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+</Schema>

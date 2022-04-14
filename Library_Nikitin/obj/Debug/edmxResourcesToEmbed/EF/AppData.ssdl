@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище LibraryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuthorBook">
+    <Key>
+      <PropertyRef Name="AuthorID" />
+      <PropertyRef Name="BookID" />
+    </Key>
+    <Property Name="AuthorID" Type="int" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="NumBookshelf" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bookcase">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookGenre">
+    <Key>
+      <PropertyRef Name="BookID" />
+      <PropertyRef Name="GenreID" />
+    </Key>
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="GenreID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bookshelf">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CaseShelf">
+    <Key>
+      <PropertyRef Name="NumBookcase" />
+      <PropertyRef Name="NumBookShelf" />
+    </Key>
+    <Property Name="NumBookcase" Type="smallint" Nullable="false" />
+    <Property Name="NumBookShelf" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientBooks">
+    <Key>
+      <PropertyRef Name="IDClient" />
+      <PropertyRef Name="IDBook" />
+    </Key>
+    <Property Name="IDClient" Type="int" Nullable="false" />
+    <Property Name="IDBook" Type="int" Nullable="false" />
+    <Property Name="From" Type="datetime" Nullable="false" />
+    <Property Name="To" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Floor">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hall">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="tinyint" Nullable="false" />
+    <Property Name="NumFloor" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HallBookcase">
+    <Key>
+      <PropertyRef Name="NumHall" />
+      <PropertyRef Name="NumBookcase" />
+    </Key>
+    <Property Name="NumHall" Type="tinyint" Nullable="false" />
+    <Property Name="NumBookcase" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_AuthorBook_Author">
+    <End Role="Author" Type="Self.Author" Multiplicity="1" />
+    <End Role="AuthorBook" Type="Self.AuthorBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AuthorBook">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorBook_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="AuthorBook" Type="Self.AuthorBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AuthorBook">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_Bookshelf">
+    <End Role="Bookshelf" Type="Self.Bookshelf" Multiplicity="1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookshelf">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="NumBookshelf" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookGenre_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="BookGenre" Type="Self.BookGenre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BookGenre">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookGenre_Genre">
+    <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+    <End Role="BookGenre" Type="Self.BookGenre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BookGenre">
+        <PropertyRef Name="GenreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CaseShelf_Bookcase">
+    <End Role="Bookcase" Type="Self.Bookcase" Multiplicity="1" />
+    <End Role="CaseShelf" Type="Self.CaseShelf" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookcase">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="CaseShelf">
+        <PropertyRef Name="NumBookcase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CaseShelf_Bookshelf">
+    <End Role="Bookshelf" Type="Self.Bookshelf" Multiplicity="1" />
+    <End Role="CaseShelf" Type="Self.CaseShelf" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookshelf">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="CaseShelf">
+        <PropertyRef Name="NumBookShelf" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientBooks_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="ClientBooks" Type="Self.ClientBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientBooks">
+        <PropertyRef Name="IDBook" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientBooks_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ClientBooks" Type="Self.ClientBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientBooks">
+        <PropertyRef Name="IDClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hall_Floor">
+    <End Role="Floor" Type="Self.Floor" Multiplicity="1" />
+    <End Role="Hall" Type="Self.Hall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Floor">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="Hall">
+        <PropertyRef Name="NumFloor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HallBookcase_Bookcase">
+    <End Role="Bookcase" Type="Self.Bookcase" Multiplicity="1" />
+    <End Role="HallBookcase" Type="Self.HallBookcase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookcase">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="HallBookcase">
+        <PropertyRef Name="NumBookcase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HallBookcase_Hall">
+    <End Role="Hall" Type="Self.Hall" Multiplicity="1" />
+    <End Role="HallBookcase" Type="Self.HallBookcase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hall">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="HallBookcase">
+        <PropertyRef Name="NumHall" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище LibraryModelContainer">
+    <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AuthorBook" EntityType="Self.AuthorBook" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bookcase" EntityType="Self.Bookcase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookGenre" EntityType="Self.BookGenre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bookshelf" EntityType="Self.Bookshelf" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CaseShelf" EntityType="Self.CaseShelf" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientBooks" EntityType="Self.ClientBooks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Floor" EntityType="Self.Floor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hall" EntityType="Self.Hall" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HallBookcase" EntityType="Self.HallBookcase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AuthorBook_Author" Association="Self.FK_AuthorBook_Author">
+      <End Role="Author" EntitySet="Author" />
+      <End Role="AuthorBook" EntitySet="AuthorBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorBook_Book" Association="Self.FK_AuthorBook_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="AuthorBook" EntitySet="AuthorBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_Bookshelf" Association="Self.FK_Book_Bookshelf">
+      <End Role="Bookshelf" EntitySet="Bookshelf" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookGenre_Book" Association="Self.FK_BookGenre_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="BookGenre" EntitySet="BookGenre" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookGenre_Genre" Association="Self.FK_BookGenre_Genre">
+      <End Role="Genre" EntitySet="Genre" />
+      <End Role="BookGenre" EntitySet="BookGenre" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CaseShelf_Bookcase" Association="Self.FK_CaseShelf_Bookcase">
+      <End Role="Bookcase" EntitySet="Bookcase" />
+      <End Role="CaseShelf" EntitySet="CaseShelf" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CaseShelf_Bookshelf" Association="Self.FK_CaseShelf_Bookshelf">
+      <End Role="Bookshelf" EntitySet="Bookshelf" />
+      <End Role="CaseShelf" EntitySet="CaseShelf" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientBooks_Book" Association="Self.FK_ClientBooks_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="ClientBooks" EntitySet="ClientBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientBooks_Client" Association="Self.FK_ClientBooks_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="ClientBooks" EntitySet="ClientBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hall_Floor" Association="Self.FK_Hall_Floor">
+      <End Role="Floor" EntitySet="Floor" />
+      <End Role="Hall" EntitySet="Hall" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HallBookcase_Bookcase" Association="Self.FK_HallBookcase_Bookcase">
+      <End Role="Bookcase" EntitySet="Bookcase" />
+      <End Role="HallBookcase" EntitySet="HallBookcase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HallBookcase_Hall" Association="Self.FK_HallBookcase_Hall">
+      <End Role="Hall" EntitySet="Hall" />
+      <End Role="HallBookcase" EntitySet="HallBookcase" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
